@@ -1,0 +1,23 @@
+name: Custom GitHub Action with Email Step
+
+on:
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 24ds3000055@ds.study.iitm.ac.in
+        run: echo "Hello, world!"
+
+      - name: Commit changes (if applicable)
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "Triggered GitHub Action" || exit 0
+          git push
